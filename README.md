@@ -1,24 +1,62 @@
 # sqlpkg-ruby
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sqlpkg`. To experiment with that code, run `bin/console` for an interactive prompt.
+[sqlpkg](https://sqlpkg.org/) is the (unofficial) SQLite package registry. This gem provides a Ruby interface to [its CLI](https://github.com/nalgeon/sqlpkg-cli).
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+    $ bundle add sqlpkg
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+    $ gem install sqlpkg
+
+This gem wraps the standalone executable version of the [sqlpkg-cli](https://github.com/nalgeon/sqlpkg-cli#download-and-install-preferred-method). These executables are platform specific, so there are actually separate underlying gems per platform, but the correct gem will automatically be picked for your platform.
+
+Supported platforms are:
+
+* arm64-darwin (macos-arm64)
+* x86_64-darwin (macos-x64)
+* arm64-linux (linux-arm64)
+* x86_64-linux (linux-x64)
+
+### Using a local installation of `sqlpkg`
+
+If you are not able to use the vendored standalone executables (for example, if you're on an unsupported platform), you can use a local installation of the `sqlpkg` executable by setting an environment variable named `SQLPKG_INSTALL_DIR` to the directory containing the executable.
+
+For example, if you've installed `sqlpkg` so that the executable is found at `/usr/local/bin/sqlpkg`, then you should set your environment variable like so:
+
+``` sh
+SQLPKG_INSTALL_DIR=/usr/local/bin
+```
+
+This also works with relative paths. If you've installed into your app's directory at `./.bin/sqlpkg`:
+
+``` sh
+SQLPKG_INSTALL_DIR=.bin
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```shell
+$ bundle exec sqlpkg help
+┌────────────────────────────────────────────────┐
+│ sqlpkg is an SQLite package manager.           │
+│ Use it to install or update SQLite extensions. │
+│                                                │
+│ Commands:                                      │
+│ help       Display help                        │
+│ info       Display package information         │
+│ init       Init project scope                  │
+│ install    Install packages                    │
+│ list       List installed packages             │
+│ uninstall  Uninstall package                   │
+│ update     Update installed packages           │
+│ version    Display version                     │
+│ which      Display path to extension file      │
+└────────────────────────────────────────────────┘
+```
 
 ## Development
 
