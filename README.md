@@ -12,6 +12,22 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
     $ gem install sqlpkg
 
+After installing the gem, run the installer:
+
+    $ rails generate sqlpkg:install
+
+The installer does three things:
+
+1. creates an empty `.sqlpkg/` directory, which ensures that `sqlpkg` will run in "project scope" and not "global scope" (see [the `sqlpkg-cli` README](https://github.com/nalgeon/sqlpkg-cli#project-vs-global-scope) for more information)
+2. creates an empty `sqlpkg.lock` file, which `sqlpkg` will use to store information about the installed packages (see [the `sqlpkg-cli` README](https://github.com/nalgeon/sqlpkg-cli#lockfile) for more information)
+3. creates an initializer file at `config/initializers/sqlpkg.rb` which will patch the `SQLite3Adapter` to automatically load the extensions installed in the `.sqlpkg/` directory whenever the database is opened
+
+Once properly integrated into your Rails application, you can install any extension listed on [the `sqlpkg` registry](https://sqlpkg.org/all/) by executing:
+
+    $ bundle exec sqlpkg install PACKAGE_IDENTIFIER
+
+When exploring the [the `sqlpkg` registry](https://sqlpkg.org/all/), the `PACKAGE_IDENTIFIER` needed to install an extension is the title found in the cards, always in `owner/name` format.
+
 This gem wraps the standalone executable version of the [sqlpkg-cli](https://github.com/nalgeon/sqlpkg-cli#download-and-install-preferred-method). These executables are platform specific, so there are actually separate underlying gems per platform, but the correct gem will automatically be picked for your platform.
 
 Supported platforms are:
