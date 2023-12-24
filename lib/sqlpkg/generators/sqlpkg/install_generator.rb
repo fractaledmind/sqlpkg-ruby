@@ -12,7 +12,11 @@ module Sqlpkg
       end
 
       def create_empty_sqlpkg_lockfile
-        create_file "sqlpkg.lock"
+        create_file "sqlpkg.lock", <<~CONTENT
+          {
+              "packages": {}
+          }
+        CONTENT
       end
 
       def copy_initializer_file
