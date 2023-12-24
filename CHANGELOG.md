@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [0.2.2] - 2023-12-24
+
+- ... actually fix the `sqlpkg:install` generator by committing the code
+
 ## [0.2.1] - 2023-12-24
 
 - Fix `sqlpkg:install` generator by actually requiring it
