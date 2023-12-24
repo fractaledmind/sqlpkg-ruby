@@ -3,6 +3,7 @@
 ## [0.2.2] - 2023-12-24
 
 - ... actually fix the `sqlpkg:install` generator by committing the code
+- Ensure `sqlpkg.lock` has the proper content to work with the installer
 
 ## [0.2.1] - 2023-12-24
 
