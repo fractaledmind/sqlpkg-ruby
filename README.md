@@ -5,16 +5,19 @@
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
-
-    $ bundle add sqlpkg
+```shell
+bundle add sqlpkg
+```
 
 If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install sqlpkg
+```shell
+gem install sqlpkg
+```
 
 After installing the gem, run the installer:
-
-    $ rails generate sqlpkg:install
+```shell
+rails generate sqlpkg:install
+```
 
 The installer does three things:
 
@@ -23,8 +26,9 @@ The installer does three things:
 3. creates an initializer file at `config/initializers/sqlpkg.rb` which will patch the `SQLite3Adapter` to automatically load the extensions installed in the `.sqlpkg/` directory whenever the database is opened
 
 Once properly integrated into your Rails application, you can install any extension listed on [the `sqlpkg` registry](https://sqlpkg.org/all/) by executing:
-
-    $ bundle exec sqlpkg install PACKAGE_IDENTIFIER
+```shell
+bundle exec sqlpkg install PACKAGE_IDENTIFIER
+```
 
 When exploring the [the `sqlpkg` registry](https://sqlpkg.org/all/), the `PACKAGE_IDENTIFIER` needed to install an extension is the title found in the cards, always in `owner/name` format.
 
@@ -56,7 +60,7 @@ SQLPKG_INSTALL_DIR=.bin
 ## Usage
 
 ```shell
-$ bundle exec sqlpkg help
+bundle exec sqlpkg help
 ┌────────────────────────────────────────────────┐
 │ sqlpkg is an SQLite package manager.           │
 │ Use it to install or update SQLite extensions. │
