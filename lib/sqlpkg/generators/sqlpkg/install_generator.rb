@@ -20,6 +20,8 @@ module Sqlpkg
       end
 
       def copy_initializer_file
+        return if defined? EnhancedSQLite3::Adapter
+
         template "initializer.rb", "config/initializers/sqlpkg.rb"
       end
     end
