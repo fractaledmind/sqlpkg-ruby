@@ -5,7 +5,7 @@ require "sqlpkg/commands"
 
 begin
   command = [Sqlpkg::Commands.executable, *ARGV]
-  puts command.inspect
+  puts command.inspect if ENV["DEBUG"]
   exec(*command)
 rescue Sqlpkg::Commands::UnsupportedPlatformException, Sqlpkg::Commands::ExecutableNotFoundException => e
   warn("ERROR: " + e.message)
