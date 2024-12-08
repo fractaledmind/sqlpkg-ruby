@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sqlpkg (0.2.2)
+    sqlpkg (0.2.3.1)
 
 GEM
   remote: https://rubygems.org/
@@ -128,10 +128,6 @@ GEM
     nokogiri (1.15.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.15.5-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.15.5-x86_64-linux)
-      racc (~> 1.4)
     parallel (1.24.0)
     parser (3.2.2.4)
       ast (~> 2.4.1)
@@ -205,8 +201,6 @@ GEM
     rubyzip (2.3.2)
     sqlite3 (1.6.9)
       mini_portile2 (~> 2.8.0)
-    sqlite3 (1.6.9-arm64-darwin)
-    sqlite3 (1.6.9-x86_64-linux)
     standard (1.32.1)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)

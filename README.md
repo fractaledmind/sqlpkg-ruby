@@ -78,6 +78,42 @@ bundle exec sqlpkg help
 └────────────────────────────────────────────────┘
 ```
 
+You can get the path to an installed extension using the `Sqlpkg.path_for` method, e.g.:
+
+```ruby
+Sqlpkg.path_for("nalgeon/uuid")
+# => "./.sqlpkg/nalgeon/uuid/uuid.dylib"
+```
+
+You can also use the shorter `.[]` alias:
+
+```ruby
+Sqlpkg["nalgeon/uuid"]
+# => "./.sqlpkg/nalgeon/uuid/uuid.dylib"
+```
+
+If you try to access an extension that hasn't been installed, a `Sqlpkg::ExtensionNotInstalledError` will be raised:
+
+```ruby
+Sqlpkg["nalgeon/ulid"]
+# raises Sqlpkg::ExtensionNotInstalledError
+```
+
+This feature is particulary useful for the [new Rails feature](https://github.com/rails/rails/pull/53827) and [`sqlite3-ruby` feature](https://github.com/sparklemotion/sqlite3-ruby/pull/586) that allows automatically loading extensions via the `extensions` keyword defined in the Rails `config/database.yml` or the `SQLite3::Database.new` method call. You can now use either:
+
+```yaml
+development:
+  adapter: sqlite3
+  extensions:
+    - <%= Sqlpkg.path_for("asg017/ulid") %>
+```
+
+or if you are using `SQLite3::Database` directly:
+
+```ruby
+db = SQLite3::Database.new(":memory:", extensions: [Sqlpkg.path_for("asg017/ulid")])
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
