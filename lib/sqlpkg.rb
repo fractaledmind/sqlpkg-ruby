@@ -19,9 +19,13 @@ module Sqlpkg
     alias_method :[], :path_for
 
     # The directory where `sqlpkg` stores installed extensions
-    # => "./.sqlpkg"
+    # => "#{Rails.root}/.sqlpkg" or "./.sqlpkg"
     def file_dir
-      File.join(__dir__, DIR)
+      if defined?(Rails) && Rails.respond_to?(:root) && Dir.exist?(Rails.root.join(DIR))
+        Rails.root.join(DIR)
+      else
+        File.join(__dir__, DIR)
+      end
     end
 
     # List of file paths for all installed extensions
