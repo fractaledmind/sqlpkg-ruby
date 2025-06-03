@@ -1,7 +1,7 @@
 module Sqlpkg
-  # constants describing the upstream tailwindcss project
+  # constants describing the upstream sqlpkg-cli project
   module Upstream
-    VERSION = "0.2.3"
+    VERSION = "0.3.0"
 
     # rubygems platform name => upstream release filename
     NATIVE_PLATFORMS = {
