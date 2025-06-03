@@ -11,6 +11,13 @@ module Sqlpkg
         empty_directory ".sqlpkg"
       end
 
+      def create_gitignore_in_sqlpkg_project_scope_directory
+        create_file ".sqlpkg/.gitignore", <<~CONTENT
+          *
+          !.gitignore
+        CONTENT
+      end
+
       def create_empty_sqlpkg_lockfile
         create_file "sqlpkg.lock", <<~CONTENT
           {
