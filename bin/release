@@ -18,5 +18,8 @@ git push --tags
 rake package
 for gem in pkg/sqlpkg-$VERSION*.gem ; do
   gem push "$gem" --host https://rubygems.org
-  rm "$gem"
+  if [ $? -eq 0 ]; then
+    rm "$gem"
+    rm -rf "${gem/.gem/}"
+  fi
 done
