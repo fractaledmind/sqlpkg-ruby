@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+## [0.3.0] - 2025-06-04
+
+- Update the `sqlpkg` upstream version to v0.3.0
+- Fix `path_for` not resolving correctly in Rails 8 apps ([@mkempe](https://github.com/fractaledmind/sqlpkg-ruby/pull/6))
+
 ## [0.2.3.2] - 2024-05-05
 
 - Add method to resolve path to an installed extension
