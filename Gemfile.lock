@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sqlpkg (0.2.3.2)
+    sqlpkg (0.3.0)
 
 GEM
   remote: https://rubygems.org/
