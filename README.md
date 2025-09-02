@@ -41,6 +41,26 @@ Supported platforms are:
 * arm64-linux (linux-arm64)
 * x86_64-linux (linux-x64)
 
+### Installing in a Rails Docker container
+
+You will need to install your extension(s) as part of the Docker build.  In a typical Rails `Dockerfile` you could do this after copying the application code.  For example:
+
+``` diff
+  # Install application gems
+  COPY Gemfile Gemfile.lock vendor ./
+  RUN bundle install && \
+      rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
+
+  # Copy application code
+  COPY . .
+
++ # Install extra sqlite packages
++ RUN bundle exec sqlpkg install asg017/ulid
+
+  # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+  RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+```
+
 ### Using a local installation of `sqlpkg`
 
 If you are not able to use the vendored standalone executables (for example, if you're on an unsupported platform), you can use a local installation of the `sqlpkg` executable by setting an environment variable named `SQLPKG_INSTALL_DIR` to the directory containing the executable.
